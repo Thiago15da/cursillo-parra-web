@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursillo Parra - Preparación FIUNA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-principal: #ffffff;
+            --bg-secundario: #f4f9ff;
+            --bg-acento: #e3f2fd;
+            --azul-parra-dark: #0d47a1;
+            --azul-parra: #1565c0;
+            --azul-claro: #42a5f5;
+            --texto-principal: #263238;
+            --texto-secundario: #546e7a;
+            --sombra: 0 10px 30px rgba(21, 101, 192, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-principal); color: var(--texto-principal); line-height: 1.7; }
+
+        /* --- Navegación --- */
+        nav {
+            background-color: rgba(255, 255, 255, 0.98);
+            padding: 0.7rem 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+        .logo-container { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+        .logo-img-nav {
+            width: 55px; height: 55px;
+            border-radius: 50%;
+            border: 2px solid var(--azul-parra);
+            object-fit: cover;
+            background: white;
+        }
+        .logo-text { font-weight: 800; color: var(--azul-parra-dark); font-size: 1.4rem; letter-spacing: -0.5px; }
+
+        .nav-links { list-style: none; display: flex; gap: 30px; }
+        .nav-links a { text-decoration: none; color: var(--texto-principal); font-weight: 600; transition: 0.3s; }
+        .nav-links a:hover { color: var(--azul-parra); }
+
+        /* --- Hero Section --- */
+        .hero {
+            min-height: 85vh;
+            background: linear-gradient(135deg, #ffffff 0%, var(--bg-secundario) 100%);
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; padding: 120px 20px 60px;
+        }
+        .hero h1 { font-size: 3.5rem; color: var(--azul-parra-dark); margin-bottom: 1.5rem; line-height: 1.2; }
+        .hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto 2.5rem; color: var(--texto-secundario); }
+
+        .btn-principal {
+            background: var(--azul-parra); color: white; padding: 18px 40px;
+            border-radius: 50px; text-decoration: none; font-weight: 700;
+            box-shadow: 0 10px 20px rgba(21, 101, 192, 0.2); transition: 0.3s;
+        }
+        .btn-principal:hover { transform: translateY(-3px); background: var(--azul-parra-dark); }
+
+        /* --- Stats Banner (Conceptos) --- */
+        .stats-banner {
+            background: var(--azul-parra-dark); padding: 50px 10%;
+            display: flex; justify-content: space-around; flex-wrap: wrap; gap: 30px;
+            color: white; text-align: center;
+        }
+        .stat-item i { font-size: 2rem; margin-bottom: 15px; color: var(--azul-claro); }
+        .stat-item h3 { color: white; font-size: 1.3rem; font-weight: 600; }
+
+        /* --- Beneficios --- */
+        section { padding: 100px 10%; }
+        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 60px; }
+
+        .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card {
+            background: white; padding: 40px; border-radius: 20px;
+            box-shadow: var(--sombra); border: 1px solid #f0f4f8; transition: 0.3s;
+        }
+        .card:hover { transform: translateY(-10px); border-color: var(--azul-claro); }
+        .card i { font-size: 2.5rem; color: var(--azul-parra); margin-bottom: 20px; }
+
+        /* --- NUEVA SECCIÓN: Proceso y Compromiso --- */
+        .compromiso-section { background-color: var(--bg-secundario); border-radius: 40px; margin: 0 10% 100px; padding: 60px; }
+        .compromiso-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        .list-item { display: flex; gap: 15px; margin-bottom: 25px; }
+        .list-item i { color: #25d366; font-size: 1.4rem; margin-top: 5px; }
+
+        /* --- Sección Profe --- */
+        .profe-box { display: flex; gap: 60px; align-items: center; flex-wrap: wrap; }
+        .profe-text { flex: 1; min-width: 300px; }
+        .profe-img-placeholder {
+            flex: 1; min-width: 300px; height: 450px;
+            background: var(--bg-acento); border-radius: 30px;
+            display: flex; align-items: center; justify-content: center;
+            border: 2px dashed var(--azul-claro);
+        }
+
+        /* --- Footer --- */
+        footer { background: var(--azul-parra-dark); color: white; padding: 60px 10% 20px; text-align: center; }
+        .logo-footer { width: 80px; height: 80px; border-radius: 50%; border: 3px solid white; margin-bottom: 20px; }
+
+        .whatsapp-float {
+            position: fixed; bottom: 30px; right: 30px; background: #25d366;
+            width: 65px; height: 65px; border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; font-size: 35px; color: white;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2); z-index: 1000; text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            .compromiso-grid { grid-template-columns: 1fr; }
+            section { padding: 60px 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo-container">
+            <img src="parralogo.jpg" alt="Logo Cursillo Parra" class="logo-img-nav">
+            <span class="logo-text">CURSILLO PARRA</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#metodo">Metodología</a></li>
+            <li><a href="#proceso">Nuestro Proceso</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Excelencia en preparación<br>para el ingreso a <span style="color:var(--azul-claro)">FIUNA</span></h1>
+            <p>Un método diseñado por el Profe Parra, enfocado en la disciplina, el análisis personalizado y la eficacia académica.</p>
+            <a href="https://wa.me/TU_NUMERO_AQUI" class="btn-principal">Iniciar mi preparación</a>
+        </div>
+    </section>
+
+    <div class="stats-banner">
+        <div class="stat-item">
+            <i class="fas fa-chart-line"></i>
+            <h3>Gran porcentaje de<br>ingresantes cada año</h3>
+        </div>
+        <div class="stat-item">
+            <i class="fas fa-user-check"></i>
+            <h3>Atención 100%<br>Personalizada</h3>
+        </div>
+        <div class="stat-item">
+            <i class="fas fa-file-invoice-dollar"></i>
+            <h3>Materiales completos<br>incluidos en la cuota</h3>
+        </div>
+    </div>
+
+    <section id="metodo">
+        <h2 class="section-title">¿Por qué elegir al Profe Parra?</h2>
+        <div class="grid-cards">
+            <div class="card">
+                <i class="fas fa-microscope"></i>
+                <h3>Análisis de Caso</h3>
+                <p>El Profe analiza cada caso en particular para identificar debilidades y fortalecer el rendimiento de cada alumno.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-layer-group"></i>
+                <h3>Material Exclusivo</h3>
+                <p>Acceso a ejercitarios y teoría actualizada basados estrictamente en el nivel de exigencia de la facultad.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-shield-halved"></i>
+                <h3>Respeto y Enfoque</h3>
+                <p>Ambiente de estudio óptimo, basado en el respeto mutuo y la concentración total hacia el objetivo.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="compromiso-section" id="proceso">
+        <div class="compromiso-grid">
+            <div>
+                <h2 style="font-size: 2.2rem; margin-bottom: 20px;">Nuestro Compromiso de Ingreso</h2>
+                <p style="margin-bottom: 30px;">Nos alejamos de la enseñanza masiva. Aquí, cada alumno recibe la guía necesaria para superar los exámenes de admisión más exigentes.</p>
+                
+                <div class="list-item">
+                    <i class="fas fa-check-circle"></i>
+                    <div>
+                        <strong>Sin gastos extra:</strong> Todos los materiales de teoría y práctica están incluidos desde el primer día.
+                    </div>
+                </div>
+                <div class="list-item">
+                    <i class="fas fa-check-circle"></i>
+                    <div>
+                        <strong>Simulacros reales:</strong> Evaluaciones periódicas que replican el ambiente y nivel de la FIUNA.
+                    </div>
+                </div>
+                <div class="list-item">
+                    <i class="fas fa-check-circle"></i>
+                    <div>
+                        <strong>Seguimiento directo:</strong> Comunicación constante con el Profe para ajustar la estrategia de estudio.
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <img src="parralogo.jpg" alt="Sello Parra" style="width: 70%; border-radius: 20px; box-shadow: var(--sombra);">
+            </div>
+        </div>
+    </div>
+
+    <section id="contacto" style="background: white;">
+        <div class="profe-box">
+            <div class="profe-img-placeholder">
+                <p style="color: var(--azul-parra); font-weight: bold;">[ Espacio para foto del Cursillo / Profe ]</p>
+            </div>
+            <div class="profe-text">
+                <h2>La marca del Ingreso</h2>
+                <p>El Profe Parra es una figura respetada y querida por sus alumnos. Su trato cercano pero exigente garantiza que el estudiante no solo aprenda fórmulas, sino que desarrolle el pensamiento analítico necesario para la ingeniería.</p>
+                <br>
+                <p><strong>"Tratamos cada ingreso como un proyecto personal de éxito."</strong></p>
+                <br>
+                <a href="https://wa.me/TU_NUMERO_AQUI" class="btn-principal">Contactar directamente</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <img src="parralogo.jpg" alt="Logo Parra" class="logo-footer">
+        <h3>CURSILLO PARRA</h3>
+        <p>Preparación Especializada para Ingreso a Ingeniería UNA</p>
+        <div style="margin: 25px 0;">
+            <a href="https://www.instagram.com/cursillo_parra_fiuna/" target="_blank" style="color:white; font-size: 1.5rem; margin: 0 10px;"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p style="font-size: 0.8rem; opacity: 0.7;">&copy; 2024 Cursillo Parra. Todos los derechos reservados.</p>
+    </footer>
+
+    <a href="https://wa.me/TU_NUMERO_AQUI" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.padding = '0.5rem 8%';
+            } else {
+                nav.style.padding = '0.7rem 8%';
+            }
+        });
+    </script>
+</body>
+</html>
